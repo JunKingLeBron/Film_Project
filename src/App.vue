@@ -1,28 +1,17 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<!-- 放置一个坑。后面页面切换（路由切换）就会按照路由对照表的配置去渲染这个坑的内容 -->
+  <transition appear mode="out-in" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown">
+      <router-view></router-view>
+  </transition>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  // 引入全局的获取本地城市得到actions ,vuex.dispatch实例方法，分发action,允许在命名空间模块(唯一的模块模块，内部的 action、mutation 和 getter)里分发action ，在全局可拿到这个action
+  created () {
+    Promise.all([this.$store.dispatch('getCityData'), this.$store.dispatch('getLocalCityName')]).then(result => {
+      this.$store.dispatch('getCityId');
+    })
   }
 }
 </script>
-
-<style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
