@@ -13,7 +13,7 @@
 <style lang="less">
 /* 菜单栏选项 */
 .film-list{
-  background:#ededed;
+  background:#fff;
   height:100%;
 }
 .menu_wrapper{

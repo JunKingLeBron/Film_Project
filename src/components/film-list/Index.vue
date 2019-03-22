@@ -51,7 +51,7 @@ export default {
           'X-Host': 'mall.film-ticket.film.list'
         }
       }).then(response => {
-        console.log(response);
+        // console.log(response);
         let res = response.data;
         if (res.status === 0) {
           // this.filmList = res.data.films;

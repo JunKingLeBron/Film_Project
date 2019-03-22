@@ -1,6 +1,6 @@
 <template>
   <section class="content-main">
-    <section class="film-content" v-for="film in filmList" :key="film.filmId">
+    <routerLink tag="div" :to="`/detail/${film.filmId}`" class="film-content" v-for="film in filmList" :key="film.filmId">
       <img :src="film.poster"
         alt="">
       <section class="film-detail">
@@ -9,10 +9,10 @@
         <p><span>{{ film.nation }} | {{ film.runtime }}分钟</span></p>
         <p>上映时间：<span>{{ new Date(film.premiereAt * 1000).toLocaleDateString() }}</span></p>
       </section>
-      <a href="" class="ticket-purchase">
+      <span href="" class="ticket-purchase">
           预购
-      </a>
-    </section>
+      </span>
+    </routerLink>
     <p v-if="pageNum >= pages" class="line2" v-show="clickmore">我是有底线的</p>
     <p v-else @click="loadMore" class="line2">点击加载更多</p>
   </section>
